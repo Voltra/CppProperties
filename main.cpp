@@ -18,9 +18,11 @@ class T{
 		int i = 0;
 
 	public:
-		Guarded<int> I;
+		Prop<int> RW;
+		ReadProp<int> R;
+		WriteProp<int> W;
 
-		explicit T(int a = 0) : i{a}, I{this->i, logGet, logSet} {
+		explicit T(int a = 0) : i{a}, RW{this->i, logGet, logSet}, R{this->i, logGet}, W{this->i, logSet} {
 		}
 };
 
@@ -30,6 +32,6 @@ int main() {
 	return i;*/
 
 	T t;
-	t.I = 42;
-	return t.I;
+	t.W = 42;
+	return t.R;
 }

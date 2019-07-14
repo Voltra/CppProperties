@@ -8,7 +8,7 @@ namespace props{
 	 * @brief A guarded proxy by reference
 	 */
 	template <class T>
-	class Guarded{
+	class Prop{
 		public:
 			using prop_type = property<T>;
 			using value_type = typename prop_type::ref_type;
@@ -29,7 +29,7 @@ namespace props{
 			setter_type setter = set;
 
 		public:
-			Guarded(value_type data, getter_type get = Guarded::get, setter_type set = Guarded::set)
+			Prop(value_type data, getter_type get = Prop::get, setter_type set = Prop::set)
 			: data{data}, getter{get}, setter{set} {
 			}
 
@@ -37,7 +37,7 @@ namespace props{
 				return this->getter(this->data);
 			}
 
-			virtual Guarded& operator=(const_ref_type newValue){
+			virtual Prop& operator=(const_ref_type newValue){
 				this->setter(this->data, newValue);
 				return *this;
 			}
@@ -45,10 +45,10 @@ namespace props{
 }
 
 template <class T>
-typename props::Guarded<T>::getter_type props::Guarded<T>::get = props::property<T>::get;
+typename props::Prop<T>::getter_type props::Prop<T>::get = props::property<T>::get;
 
 template <class T>
-typename props::Guarded<T>::setter_type props::Guarded<T>::set = props::property<T>::set;
+typename props::Prop<T>::setter_type props::Prop<T>::set = props::property<T>::set;
 
 template <class T>
-typename props::Guarded<T>::setter_type props::Guarded<T>::noSet = props::property<T>::noSet;
+typename props::Prop<T>::setter_type props::Prop<T>::noSet = props::property<T>::noSet;

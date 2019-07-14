@@ -8,5 +8,7 @@ namespace props{}
 
 #include <properties/property.h>
 #include <properties/readonly.h>
-#include <properties/Guarded.h>
+#include <properties/Prop.h>
+#include <properties/ReadProp.h>
+#include <properties/WriteProp.h>
 #include <properties/utils.h>
