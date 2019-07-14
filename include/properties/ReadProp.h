@@ -9,33 +9,20 @@ namespace props{
 	 */
 	template <class T>
 	class ReadProp{
-		public:
-			using prop_type = property<T>;
-			using value_type = typename prop_type::ref_type;
-			using ref_type = typename prop_type::ref_type;
-			using const_ref_type = typename prop_type::const_ref_type;
-
-			using getter_type = typename prop_type::getter_type;
-
-		public:
-			static getter_type get;
+		USING_PROPS_TYPES(T, public)
 
 		protected:
-			value_type data;
-			getter_type getter = get;
+			ref_type ref;
+			getter_type getter = props::get;
 
 		public:
-			ReadProp(value_type data, getter_type get = ReadProp::get)
-					: data{data}, getter{get}{
+			ReadProp(ref_type ref, getter_type get = props::get) : ref{ref}, getter{get}{
 			}
 
 			operator const_ref_type(){
-				return this->getter(this->data);
+				return this->getter(this->ref);
 			}
 
 			ReadProp& operator=(const_ref_type newValue) = delete;
 	};
 }
-
-template <class T>
-typename props::ReadProp<T>::getter_type props::ReadProp<T>::get = props::property<T>::get;

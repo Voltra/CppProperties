@@ -9,17 +9,20 @@ namespace props{
 	 */
 	template <class T>
 	class readonly : protected property<T>{
-		public:
-			using value_type = typename property<T>::value_type;
-			using const_ref_type = typename property<T>::const_ref_type;
-			using getter_type = typename property<T>::getter_type;
+		USING_PROPS_TYPES(T, public)
 
 		public:
 			using property<T>::operator const_ref_type;
 			using property<T>::operator=;
 
+			/**
+			 * @brief Construct a readonly property via its data and a getter
+			 * @tparam U being the type to construct from
+			 * @param data being the data to construct from
+			 * @param get being the getter
+			 */
 			template <class U>
-			readonly(U&& data, getter_type get = property<T>::get) : property<T>{std::forward<U>(data), get, property<T>::noSet} {
+			readonly(U&& data, getter_type get = props::get) : property<T>{std::forward<U>(data), get, props::noSet} {
 			}
 	};
 
@@ -30,24 +33,36 @@ namespace props{
 	 */
 	template <class T>
 	class preadonly{
-		public:
-			using prop_type = property<T>;
-			using value_type = typename prop_type::value_type;
-			using ref_type = typename prop_type::ref_type;
-			using const_ref_type = typename prop_type::const_ref_type;
-
-			using getter_type = typename prop_type::getter_type;
-			using setter_type = typename prop_type::setter_type;
+		USING_PROPS_TYPES(T, public)
 
 		protected:
+			/**
+			 * @var data
+			 * @brief The underlying data
+			 */
 			value_type data;
-			getter_type getter = prop_type::get;
+
+			/**
+			 * @var getter
+			 * @brief The getter used to access the underlying data from outside
+			 */
+			getter_type getter = props::get;
 
 		public:
+			/**
+			 * @brief Construct a pure readonly property from data and a getter
+			 * @tparam U being the type to construct from
+			 * @param data being the data to construct from
+			 * @param get being the getter
+			 */
 			template <class U>
-			preadonly(U&& data, getter_type get = prop_type::get) : data{std::forward<U>(data)}, getter{get} {
+			preadonly(U&& data, getter_type get = props::get) : data{std::forward<U>(data)}, getter{get} {
 			}
 
+			/**
+			 * @brief Access the data from outside the preadonly
+			 * @return a const reference to the underlying data
+			 */
 			operator const_ref_type(){
 				return this->getter(
 					std::ref(this->data)

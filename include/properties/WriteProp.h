@@ -9,34 +9,21 @@ namespace props{
 	 */
 	template <class T>
 	class WriteProp{
-		public:
-			using prop_type = property<T>;
-			using value_type = typename prop_type::ref_type;
-			using ref_type = typename prop_type::ref_type;
-			using const_ref_type = typename prop_type::const_ref_type;
-
-			using setter_type = typename prop_type::setter_type;
-
-		public:
-			static setter_type set;
+		USING_PROPS_TYPES(T, public)
 
 		protected:
-			value_type data;
-			setter_type setter = set;
+			ref_type ref;
+			setter_type setter = props::set;
 
 		public:
-			WriteProp(value_type data, setter_type set = WriteProp::set)
-					: data{data}, setter{set} {
+			WriteProp(ref_type ref, setter_type set = props::set) : ref{ref}, setter{set} {
 			}
 
 			operator const_ref_type() = delete;
 
 			virtual WriteProp& operator=(const_ref_type newValue){
-				this->setter(this->data, newValue);
+				this->setter(this->ref, newValue);
 				return *this;
 			}
 	};
 }
-
-template <class T>
-typename props::WriteProp<T>::setter_type props::WriteProp<T>::set = props::property<T>::set;

@@ -2,6 +2,7 @@
 
 #include <functional>
 #include <utility>
+#include <properties/utils.h>
 
 namespace props{
 	/**
@@ -11,36 +12,55 @@ namespace props{
 	 */
 	template <class T>
 	class property{
-		public:
-			using value_type = T;
-			using ref_type = T&;
-			using const_ref_type = const T&;
-
-			using getter_type = std::function<const_ref_type(ref_type)>;
-			using setter_type = std::function<void(ref_type, const_ref_type)>;
-
-		public:
-			static getter_type get;
-			static setter_type set;
-			static setter_type noSet;
+		USING_PROPS_TYPES(T, public)
 
 		protected:
+			/**
+			 * @var data
+			 * @brief The data that is accessed through getters and setters
+			 */
 			value_type data;
-			getter_type getter = property::get;
-			setter_type setter = property::set;
+
+			/**
+			 * @var getter
+			 * @brief The getter used to retrieve data
+			 */
+			getter_type getter = props::get;
+
+			/**
+			 * @var setter
+			 * @brief The setter used to alter data
+			 */
+			setter_type setter = props::set;
 
 		public:
+			/**
+			 * @brief Construct from data and getters/setters
+			 * @tparam U being the type of the data to construct from
+			 * @param data being the data to construct from
+			 * @param get being the getter to use
+			 * @param set being the setter to use
+			 */
 			template <class U>
-			property(U&& data, getter_type get = property::get, setter_type set = property::set)
+			property(U&& data, getter_type get = props::get, setter_type set = props::set)
 			: data{std::forward<U>(data)}, getter{get}, setter{set} {
 			}
 
+			/**
+			 * @brief Get the data from the property
+			 * @return a const reference to the underlying data
+			 */
 			operator const_ref_type(){
 				return this->getter(
 					std::ref(this->data)
 				);
 			}
 
+			/**
+			 * @brief Set the data using the property
+			 * @param newValue being the value to assign
+			 * @return a reference to this property
+			 */
 			virtual property& operator=(const_ref_type newValue){
 				this->setter(
 					std::ref(this->data),
@@ -51,17 +71,3 @@ namespace props{
 			}
 	};
 }
-
-template <class T>
-typename props::property<T>::getter_type props::property<T>::get = [](T& e) -> const T&{
-	return e;
-};
-
-template <class T>
-typename props::property<T>::setter_type props::property<T>::set = [](T& data, const T& newValue) -> void{
-	data = newValue;
-};
-
-template <class T>
-typename props::property<T>::setter_type props::property<T>::noSet = [](T& data, const T& newValue) -> void{
-};
