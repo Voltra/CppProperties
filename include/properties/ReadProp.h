@@ -1,5 +1,5 @@
 #pragma once
-#include <properties/readonly.h>
+#include <properties/property.h>
 
 namespace props{
 	/**
@@ -10,7 +10,7 @@ namespace props{
 	template <class T>
 	class ReadProp{
 		public:
-			using prop_type = readonly<T>;
+			using prop_type = property<T>;
 			using value_type = typename prop_type::ref_type;
 			using ref_type = typename prop_type::ref_type;
 			using const_ref_type = typename prop_type::const_ref_type;
