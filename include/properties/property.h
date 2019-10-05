@@ -13,6 +13,7 @@ namespace props{
 	template <class T>
 	class property{
 		USING_PROPS_TYPES(T, public)
+		PROPS_OPERATORS(property)
 
 		protected:
 			/**
@@ -25,13 +26,13 @@ namespace props{
 			 * @var getter
 			 * @brief The getter used to retrieve data
 			 */
-			getter_type getter = props::get;
+			getter_type getter = props::get<value_type>;
 
 			/**
 			 * @var setter
 			 * @brief The setter used to alter data
 			 */
-			setter_type setter = props::set;
+			setter_type setter = props::set<value_type>;
 
 		public:
 			/**
@@ -42,7 +43,7 @@ namespace props{
 			 * @param set being the setter to use
 			 */
 			template <class U>
-			property(U&& data, getter_type get = props::get, setter_type set = props::set)
+			property(U&& data, getter_type get = props::get<value_type>, setter_type set = props::set<value_type>)
 			: data{std::forward<U>(data)}, getter{get}, setter{set} {
 			}
 

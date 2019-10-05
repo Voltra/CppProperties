@@ -22,7 +22,7 @@ namespace props{
 			 * @param get being the getter
 			 */
 			template <class U>
-			readonly(U&& data, getter_type get = props::get) : property<T>{std::forward<U>(data), get, props::noSet} {
+			readonly(U&& data, getter_type get = props::get<value_type>) : property<T>{std::forward<U>(data), get, props::noSet<value_type>} {
 			}
 	};
 
@@ -46,7 +46,7 @@ namespace props{
 			 * @var getter
 			 * @brief The getter used to access the underlying data from outside
 			 */
-			getter_type getter = props::get;
+			getter_type getter = props::get<value_type>;
 
 		public:
 			/**
@@ -56,7 +56,7 @@ namespace props{
 			 * @param get being the getter
 			 */
 			template <class U>
-			preadonly(U&& data, getter_type get = props::get) : data{std::forward<U>(data)}, getter{get} {
+			preadonly(U&& data, getter_type get = props::get<value_type>) : data{std::forward<U>(data)}, getter{get} {
 			}
 
 			/**

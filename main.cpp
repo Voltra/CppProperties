@@ -26,12 +26,35 @@ class T{
 		}
 };
 
+class Index{
+	protected:
+		int i = 0;
+		int base1 = 0;
+
+	public:
+		Prop<int> index;
+		ReadProp<int> indexPlusOne;
+
+		explicit Index(int x = 0) :
+			i{x},
+			base1{x+1},
+			index{this->i, get<int>, [&](int& self, const int& that){
+				this->base1 = that + 1;
+				self = that;
+			}}, indexPlusOne{this->base1} {
+		}
+};
+
 int main() {
 	/*property<int> i{0, logGet, logSet};
 	i = 14;
 	return i;*/
 
-	T t;
+	/*T t;
 	t.W = 42;
-	return t.R;
+	return t.R;*/
+
+	Index i{0};
+	i.index += 2;
+	return i.indexPlusOne;
 }

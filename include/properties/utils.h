@@ -68,3 +68,35 @@ namespace props{
 		using const_ref_type = typename trait::const_ref_type;\
 		using getter_type = typename trait::getter_type;\
 		using setter_type = typename trait::setter_type;
+
+/**
+ * @def PROPS_OPERATORS(T)
+ * @brief Define self assignment operators for property types
+ */
+#define PROPS_OPERATORS(T)\
+	T& operator+=(const_ref_type incr){\
+		*this = *this + incr;\
+		return *this;\
+	}\
+	\
+	T& operator-=(const_ref_type decr){\
+		*this = *this - decr;\
+		return *this;\
+	}\
+	\
+	T& operator*=(const_ref_type mult){\
+		*this = *this * mult;\
+		return *this;\
+	}\
+	\
+	T& operator/=(const_ref_type fact){\
+		*this = *this / fact;\
+		return *this;\
+	}\
+	\
+	T& operator%=(const_ref_type mod){\
+		*this = *this % mod;\
+		return *this;\
+	}
+
+//
