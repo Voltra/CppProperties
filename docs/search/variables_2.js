@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setter',['setter',['../classprops_1_1property.html#a1a31c639ba979d5bfa7c48fd705ce749',1,'props::property']]]
+  ['listeners',['listeners',['../classprops_1_1_watched.html#aaa296ca7fe94e77196393957087e86dc',1,'props::Watched']]]
 ];

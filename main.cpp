@@ -32,7 +32,7 @@ class Index{
 		int base1 = 0;
 
 	public:
-		Prop<int> index;
+		Watched<int> index;
 		ReadProp<int> indexPlusOne;
 
 		explicit Index(int x = 0) :
@@ -55,6 +55,9 @@ int main() {
 	return t.R;*/
 
 	Index i{0};
+	i.index.onChange([](const int& old, const int& new_){
+		std::cout << "new + old = " << (old+new_) << '\n';
+	});
 	i.index += 2;
 	return i.indexPlusOne;
 }

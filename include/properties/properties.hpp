@@ -11,4 +11,5 @@ namespace props{}
 #include <properties/Prop.h>
 #include <properties/ReadProp.h>
 #include <properties/WriteProp.h>
+#include <properties/Watched.h>
 #include <properties/utils.h>

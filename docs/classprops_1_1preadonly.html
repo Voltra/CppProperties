@@ -78,10 +78,10 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a19ee002ef81f345bd675336763be75cf"><td class="memTemplParams" colspan="2">template&lt;class U &gt; </td></tr>
-<tr class="memitem:a19ee002ef81f345bd675336763be75cf"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classprops_1_1preadonly.html#a19ee002ef81f345bd675336763be75cf">preadonly</a> (U &amp;&amp;<a class="el" href="classprops_1_1preadonly.html#a6351c20ba1917430c2418f9cfe7f0125">data</a>, getter_type <a class="el" href="namespaceprops.html#a349fc8889f3474a91cb30f43f8bf62e6">get</a>=<a class="el" href="namespaceprops.html#a349fc8889f3474a91cb30f43f8bf62e6">props::get</a>)</td></tr>
-<tr class="memdesc:a19ee002ef81f345bd675336763be75cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a pure readonly property from data and a getter.  <a href="#a19ee002ef81f345bd675336763be75cf">More...</a><br /></td></tr>
-<tr class="separator:a19ee002ef81f345bd675336763be75cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93b33d54f492e5e3f7eefe88906fecd7"><td class="memTemplParams" colspan="2">template&lt;class U &gt; </td></tr>
+<tr class="memitem:a93b33d54f492e5e3f7eefe88906fecd7"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classprops_1_1preadonly.html#a93b33d54f492e5e3f7eefe88906fecd7">preadonly</a> (U &amp;&amp;<a class="el" href="classprops_1_1preadonly.html#a6351c20ba1917430c2418f9cfe7f0125">data</a>, getter_type <a class="el" href="namespaceprops.html#a349fc8889f3474a91cb30f43f8bf62e6">get</a>=<a class="el" href="namespaceprops.html#a349fc8889f3474a91cb30f43f8bf62e6">props::get</a>&lt; value_type &gt;)</td></tr>
+<tr class="memdesc:a93b33d54f492e5e3f7eefe88906fecd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a pure readonly property from data and a getter.  <a href="#a93b33d54f492e5e3f7eefe88906fecd7">More...</a><br /></td></tr>
+<tr class="separator:a93b33d54f492e5e3f7eefe88906fecd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f42e3819b828ba36ad37a3ead7f0385"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classprops_1_1preadonly.html#a5f42e3819b828ba36ad37a3ead7f0385">operator const_ref_type</a> ()</td></tr>
 <tr class="memdesc:a5f42e3819b828ba36ad37a3ead7f0385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the data from outside the preadonly.  <a href="#a5f42e3819b828ba36ad37a3ead7f0385">More...</a><br /></td></tr>
 <tr class="separator:a5f42e3819b828ba36ad37a3ead7f0385"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -93,7 +93,7 @@ value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <tr class="memdesc:a6351c20ba1917430c2418f9cfe7f0125"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying data. <br /></td></tr>
 <tr class="separator:a6351c20ba1917430c2418f9cfe7f0125"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ecbb6c0cd68de3bfdff88034148fbe3"><td class="memItemLeft" align="right" valign="top"><a id="a0ecbb6c0cd68de3bfdff88034148fbe3"></a>
-getter_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classprops_1_1preadonly.html#a0ecbb6c0cd68de3bfdff88034148fbe3">getter</a> = <a class="el" href="namespaceprops.html#a349fc8889f3474a91cb30f43f8bf62e6">props::get</a></td></tr>
+getter_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classprops_1_1preadonly.html#a0ecbb6c0cd68de3bfdff88034148fbe3">getter</a> = <a class="el" href="namespaceprops.html#a349fc8889f3474a91cb30f43f8bf62e6">props::get</a>&lt;value_type&gt;</td></tr>
 <tr class="memdesc:a0ecbb6c0cd68de3bfdff88034148fbe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The getter used to access the underlying data from outside. <br /></td></tr>
 <tr class="separator:a0ecbb6c0cd68de3bfdff88034148fbe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -111,8 +111,8 @@ class props::preadonly&lt; T &gt;</h3>
 
 <p class="definition">Definition at line <a class="el" href="readonly_8h_source.html#l00035">35</a> of file <a class="el" href="readonly_8h_source.html">readonly.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a19ee002ef81f345bd675336763be75cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19ee002ef81f345bd675336763be75cf">&#9670;&nbsp;</a></span>preadonly()</h2>
+<a id="a93b33d54f492e5e3f7eefe88906fecd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93b33d54f492e5e3f7eefe88906fecd7">&#9670;&nbsp;</a></span>preadonly()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -134,7 +134,7 @@ template&lt;class U &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">getter_type&#160;</td>
-          <td class="paramname"><em>get</em> = <code><a class="el" href="namespaceprops.html#a349fc8889f3474a91cb30f43f8bf62e6">props::get</a></code>&#160;</td>
+          <td class="paramname"><em>get</em> = <code><a class="el" href="namespaceprops.html#a349fc8889f3474a91cb30f43f8bf62e6">props::get</a>&lt;value_type&gt;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

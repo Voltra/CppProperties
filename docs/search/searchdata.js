@@ -1,10 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "dgnoprs",
-  1: "gpr",
+  0: "dglnoprsw",
+  1: "prw",
   2: "p",
-  3: "gnoprs",
-  4: "dgs"
+  3: "gnoprsw",
+  4: "dglrs",
+  5: "l"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "namespaces",
   3: "functions",
-  4: "variables"
+  4: "variables",
+  5: "typedefs"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "Classes",
   2: "Namespaces",
   3: "Functions",
-  4: "Variables"
+  4: "Variables",
+  5: "Typedefs"
 };
 
